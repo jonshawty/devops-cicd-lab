@@ -26,7 +26,9 @@ jobs:
           coverage: none
 
       - name: Instalar dependências
+        working-directory: ./02-phpunit-ci
         run: composer install --no-interaction --prefer-dist
 
       - name: Executar PHPUnit
+        working-directory: ./02-phpunit-ci
         run: vendor/bin/phpunit

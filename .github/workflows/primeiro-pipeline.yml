@@ -1,0 +1,25 @@
+name: Primeiro Pipeline CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  primeiro-job:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Verificar ambiente
+        run: |
+          echo "Pipeline iniciado!"
+          echo "Runner: Ubuntu"
+          echo "Executando primeiro pipeline CI/CD"
+
+      - name: Finalizar pipeline
+        run: echo "Pipeline concluído com sucesso! 🚀"

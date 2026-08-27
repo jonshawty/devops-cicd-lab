@@ -1,0 +1,28 @@
+# Composer
+/vendor/
+
+# Ambiente local
+.env
+.env.*
+!.env.example
+
+# IDEs
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.cache
+
+# Cobertura de testes
+.phpunit.cache/
+.phpunit.result.cache
+coverage/

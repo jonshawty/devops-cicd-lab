@@ -4,18 +4,15 @@ on:
   push:
     branches:
       - main
-
   pull_request:
     branches:
       - main
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Baixar código
         uses: actions/checkout@v4
 
@@ -25,10 +22,18 @@ jobs:
           php-version: '8.2'
           coverage: none
 
+      - name: Cache de dependências do Composer
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache/files
+          key: composer-${{ hashFiles('02-phpunit-ci/composer.lock') }}
+          restore-keys: |
+            composer-
+
       - name: Instalar dependências
         working-directory: ./02-phpunit-ci
         run: composer install --no-interaction --prefer-dist
 
       - name: Executar PHPUnit
         working-directory: ./02-phpunit-ci
-        run: vendor/bin/phpunit tests
+        run: vendor/bin/phpunit

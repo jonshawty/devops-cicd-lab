@@ -31,4 +31,4 @@ jobs:
 
       - name: Executar PHPUnit
         working-directory: ./02-phpunit-ci
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit tests

@@ -1,5 +1,6 @@
 <?php
 
+use App\Calculadora;
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../src/Calculadora.php';

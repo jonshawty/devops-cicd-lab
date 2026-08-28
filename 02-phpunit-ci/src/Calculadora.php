@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Calculadora
 {
     public function somar(int $a, int $b): int

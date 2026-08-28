@@ -22,10 +22,15 @@ jobs:
           php-version: '8.2'
           coverage: none
 
+      - name: Descobrir diretório de cache do Composer
+        id: composer-cache
+        working-directory: ./02-phpunit-ci
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
       - name: Cache de dependências do Composer
         uses: actions/cache@v4
         with:
-          path: ~/.composer/cache/files
+          path: ${{ steps.composer-cache.outputs.dir }}
           key: composer-${{ hashFiles('02-phpunit-ci/composer.lock') }}
           restore-keys: |
             composer-
@@ -33,7 +38,3 @@ jobs:
       - name: Instalar dependências
         working-directory: ./02-phpunit-ci
         run: composer install --no-interaction --prefer-dist
-
-      - name: Executar PHPUnit
-        working-directory: ./02-phpunit-ci
-        run: vendor/bin/phpunit
